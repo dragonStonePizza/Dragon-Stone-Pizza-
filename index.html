@@ -7,112 +7,52 @@
     <title>Dragon Stone Pizza</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #f7f7f7;
-            color: #333;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #000;
         }
         header {
-            background-color: #333;
-            color: white;
+            background-color: #f0f0f0;
+            border-bottom: 5px solid royalblue;
             text-align: center;
-            padding: 20px;
+            padding: 20px 0;
         }
         header img {
             max-width: 150px;
-            margin-bottom: 10px;
         }
         nav {
-            background-color: #4169e1;
-            padding: 10px;
             text-align: center;
+            margin: 20px 0;
         }
         nav a {
-            color: white;
             text-decoration: none;
-            margin: 0 15px;
-            font-size: 16px;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        main {
-            padding: 20px;
-        }
-        section {
-            margin-bottom: 40px;
-        }
-        h1, h2 {
-            color: #333;
-        }
-        .menu-section ul, .contact-details ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        .menu-section ul li, .contact-details ul li {
-            margin-bottom: 10px;
-        }
-        form {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: white;
-            border: 2px solid #4169e1;
+            color: royalblue;
+            border: 2px solid royalblue;
+            padding: 10px 20px;
+            margin: 0 10px;
             border-radius: 5px;
-        }
-        form label {
-            display: block;
-            margin-bottom: 8px;
             font-weight: bold;
         }
-        form input, form select, form button {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        form button {
-            background-color: #4169e1;
+        nav a:hover {
+            background-color: royalblue;
             color: white;
-            font-size: 16px;
-            cursor: pointer;
-            border: none;
         }
-        form button:hover {
-            background-color: #334f9e;
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         footer {
-            background-color: #e0e0e0;
-            color: #333;
             text-align: center;
-            padding: 10px 0;
-        }
-        footer a {
-            color: #4169e1;
-            text-decoration: none;
+            margin: 20px 0;
+            color: #777;
         }
     </style>
-    <script>
-        // Function to disable booking if after 5 PM on the Friday before Sunday
-        function validateBooking() {
-            const now = new Date();
-            const today = now.getDay(); // 0 is Sunday, 5 is Friday
-            const currentHour = now.getHours();
-            
-            // Calculate the next Sunday
-            const nextSunday = new Date();
-            nextSunday.setDate(now.getDate() + (7 - today) % 7); // Move to Sunday
-            
-            // If today is Friday and time is after 5 PM, or it’s Saturday or Sunday
-            if ((today === 5 && currentHour >= 17) || today === 6 || today === 0) {
-                alert("Booking for this Sunday's Carvery is now closed. Please visit us next week!");
-                return false;
-            }
-            return true; // Allow booking
-        }
-    </script>
 </head>
 <body>
     <header>
@@ -120,70 +60,39 @@
         <h1>Welcome to Dragon Stone Pizza</h1>
     </header>
     <nav>
-        <a href="#home">Home</a>
-        <a href="#carvery-booking">Carvery Booking</a>
-        <a href="#menu">Menu</a>
-        <a href="#contact">Contact</a>
+        <a href="#booking">Book Carvery</a>
+        <a href="#menu">View Menu</a>
+        <a href="#delivery">Delivery & Takeaway</a>
     </nav>
-    <main>
-        <section id="home">
-            <h1>Delicious Handmade Pizzas & Sunday Carvery</h1>
-            <p>Experience the best Neapolitan-style pizza and a hearty Sunday Carvery at The Grampian, Corby.</p>
-        </section>
-        <section id="carvery-booking">
-            <h2>Book Your Sunday Carvery</h2>
-            <p>Bookings for the Sunday Carvery must be made by 5 PM on the Friday before.</p>
-            <form action="/submit_booking" method="POST" onsubmit="return validateBooking();">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" required>
-
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="party-size">Party Size</label>
-                <input type="number" id="party-size" name="party_size" min="1" max="30" required>
-
-                <label for="time-slot">Preferred Time Slot</label>
-                <select id="time-slot" name="time_slot" required>
-                    <option value="1pm">1:00 PM</option>
-                    <option value="1:30pm">1:30 PM</option>
-                    <option value="3pm">3:00 PM</option>
-                    <option value="3:30pm">3:30 PM</option>
-                </select>
-
-                <button type="submit">Submit Booking</button>
-            </form>
-        </section>
-        <section id="menu">
-            <h2>Our Menu</h2>
-            <p>Walk-ins are welcome for the main menu. No bookings required!</p>
-            <div class="menu-section">
-                <h3>12" Pizzas</h3>
-                <ul>
-                    <li>Margherita - £8.00</li>
-                    <li>Ham & Mushroom - £10.00</li>
-                    <li>Pepperoni - £10.00</li>
-                    <li>The Veggie (Onions, Peppers, Mushrooms) - £10.00</li>
-                    <li>The All In (Pepperoni, Onions, Peppers, Mushrooms) - £11.00</li>
-                </ul>
-            </div>
-        </section>
-        <section id="contact">
-            <h2>Contact Us</h2>
-            <div class="contact-details">
-                <p><strong>Address:</strong> The Grampian, Corby</p>
-                <p><strong>Phone:</strong> <a href="tel:07861106285">07861106285</a></p>
-                <p><strong>Email:</strong> <a href="mailto:dragonstonepizza@gmail.com">dragonstonepizza@gmail.com</a></p>
-                <p><strong>Find us on Facebook:</strong> <a href="https://www.facebook.com/dragonstonepizza" target="_blank">Dragon Stone Pizza</a></p>
-                <p><strong>Order Online:</strong> <a href="https://www.ubereats.com/store/dragon-stone-pizza/-sXOwI71RX6_RIxqYNE_eQ?diningMode=DELIVERY" target="_blank">Order on Uber Eats</a></p>
-            </div>
-        </section>
-    </main>
+    <section id="booking">
+        <h2>Book Your Sunday Carvery</h2>
+        <p>Bookings must be made by 5 PM on the Friday before.</p>
+        <form>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br>
+            <label for="phone">Phone:</label><br>
+            <input type="tel" id="phone" name="phone" required><br>
+            <label for="party-size">Party Size:</label><br>
+            <input type="number" id="party-size" name="party-size" required min="1"><br>
+            <label for="date">Date:</label><br>
+            <input type="date" id="date" name="date" required><br><br>
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+    <section id="menu">
+        <h2>Our Menu</h2>
+        <p>Check out our delicious range of pizzas, bar snacks, and more!</p>
+        <img src="menu1.jpg" alt="Menu Page 1" style="width: 100%;">
+        <img src="menu2.jpg" alt="Menu Page 2" style="width: 100%; margin-top: 20px;">
+    </section>
+    <section id="delivery">
+        <h2>Delivery & Takeaway</h2>
+        <p>We offer delivery in Corby (£3) and Weldon, Stanion, and Cottingham (£5). Alternatively, you can find us on <a href="https://www.ubereats.com/store/dragon-stone-pizza/-sXOwI71RX6_RIxqYNE_eQ?diningMode=DELIVERY" target="_blank">Uber Eats</a>.</p>
+    </section>
     <footer>
-        <p>&copy; 2025 Dragon Stone Pizza. All rights reserved.</p>
+        <p>Follow us on <a href="https://www.facebook.com/dragonstonepizza" target="_blank">Facebook</a>!</p>
     </footer>
 </body>
 </html>
